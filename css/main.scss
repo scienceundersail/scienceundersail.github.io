@@ -33,6 +33,14 @@
 //     }
 // }
 
+/* --- Portfolio: force equal tile heights --- */
+#portfolio .portfolio-box img {
+  width: 100%;
+  height: 260px;          /* pick a height you like */
+  object-fit: cover;      /* fill the box, crop overflow */
+  display: block;         /* removes baseline gaps under images */
+}
+
 // variables.less
 $theme-primary: #F05F40;
 $theme-dark: #222;
