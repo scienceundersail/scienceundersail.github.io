@@ -32,14 +32,87 @@
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
-
-/* --- Portfolio: force equal tile heights --- */
+/* =========================
+   PORTFOLIO: equal tile heights
+   ========================= */
 #portfolio .portfolio-box img {
   width: 100%;
-  height: 260px;          /* pick a height you like */
-  object-fit: cover;      /* fill the box, crop overflow */
-  display: block;         /* removes baseline gaps under images */
+  height: 260px;       /* adjust to taste */
+  object-fit: cover;   /* preserves aspect ratio, crops overflow */
+  display: block;
 }
+
+/* Responsive tweaks (optional but recommended) */
+@media (max-width: 991px) {
+  #portfolio .portfolio-box img { height: 220px; }
+}
+@media (max-width: 767px) {
+  #portfolio .portfolio-box img { height: 180px; }
+}
+
+/* =========================
+   FLEET: hover overlay cards
+   ========================= */
+.fleet-box {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 0 0 30px;
+  overflow: hidden;
+}
+
+.fleet-box img {
+  width: 100%;
+  height: 360px;       /* uniform fleet image height */
+  object-fit: cover;   /* crop to uniform frame */
+  display: block;
+}
+
+/* overlay */
+.fleet-box-caption {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(240, 95, 64, 0.92); /* matches Creative theme accent */
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+  color: #fff;
+}
+
+.fleet-box:hover .fleet-box-caption {
+  opacity: 1;
+}
+
+/* center content */
+.fleet-box-caption-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.fleet-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.fleet-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fleet-specs li {
+  margin: 6px 0;
+}
+
+@media (max-width: 767px) {
+  .fleet-box img { height: 260px; }
+  .fleet-box-caption-content { text-align: left; }
+}
+
 
 // variables.less
 $theme-primary: #F05F40;
