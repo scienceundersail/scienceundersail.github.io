@@ -1,143 +1,106 @@
----
----
+<section id="portfolio">
+  <!-- Header area -->
+  <div class="container portfolio-heading">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Support at sea and ashore</h2>
+        <hr class="primary">
+        <p class="text-muted">
+          Practical expedition support and research services—delivered from our sailboats.
+        </p>
+      </div>
+    </div>
+  </div>
 
-@charset "utf-8";
+  <!-- Grid area -->
+  <div class="container-fluid no-padding">
+    <div class="row no-gutter">
 
-// Example Defaults
-// $base-font-family: Helvetica, Arial, sans-serif;
-// $base-font-size:   16px;
-// $small-font-size:  $base-font-size * 0.875;
-// $base-line-height: 1.5;
+      <!-- 1 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/1.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/1.jpg" class="img-responsive" alt="We take you to remote places">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                We take you to remote places
+              </div>
+              <!-- project-name removed intentionally -->
+            </div>
+          </div>
+        </a>
+      </div>
 
-// $spacing-unit:     30px;
+      <!-- 2 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/2.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/2.jpg" class="img-responsive" alt="Biodiversity monitoring">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                Biodiversity monitoring
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-// $text-color:       #111;
-// $background-color: #fdfdfd;
-// $brand-color:      #2a7ae2;
+      <!-- 3 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/3.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/3.jpg" class="img-responsive" alt="Wildlife surveys">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                Wildlife surveys
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-// $grey-color:       #828282;
-// $grey-color-light: lighten($grey-color, 40%);
-// $grey-color-dark:  darken($grey-color, 25%);
+      <!-- 4 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/4.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/4.jpg" class="img-responsive" alt="Data collection">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                Data collection
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-// // Width of the content area
-// $content-width:    800px;
+      <!-- 5 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/5.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/5.jpg" class="img-responsive" alt="Data analysis">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                Data analysis
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-// $on-palm:          600px;
-// $on-laptop:        800px;
+      <!-- 6 -->
+      <div class="col-lg-4 col-sm-6">
+        <a href="{{ site.baseurl }}/img/portfolio/6.jpg" class="portfolio-box">
+          <img src="{{ site.baseurl }}/img/portfolio/6.jpg" class="img-responsive" alt="(Popular) science writing">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                (Popular) science writing
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-// Using media queries with like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-/* =========================
-   PORTFOLIO: equal tile heights
-   ========================= */
-#portfolio .portfolio-box img {
-  width: 100%;
-  height: 260px;       /* adjust to taste */
-  object-fit: cover;   /* preserves aspect ratio, crops overflow */
-  display: block;
-}
-
-/* Portfolio header spacing (keeps grid edge-to-edge below) */
-.portfolio-heading {
-  padding-top: 60px;
-  padding-bottom: 30px;
-}
-
-/* Responsive tweaks (optional but recommended) */
-@media (max-width: 991px) {
-  #portfolio .portfolio-box img { height: 220px; }
-}
-@media (max-width: 767px) {
-  #portfolio .portfolio-box img { height: 180px; }
-}
-
-/* =========================
-   FLEET: hover overlay cards
-   ========================= */
-.fleet-box {
-  position: relative;
-  display: block;
-  max-width: 100%;
-  margin: 0 0 30px;
-  overflow: hidden;
-}
-
-.fleet-box img {
-  width: 100%;
-  height: 360px;       /* uniform fleet image height */
-  object-fit: cover;   /* crop to uniform frame */
-  display: block;
-}
-
-/* overlay */
-.fleet-box-caption {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(240, 95, 64, 0.92); /* matches Creative theme accent */
-  opacity: 0;
-  transition: all 0.25s ease-in-out;
-  color: #fff;
-}
-
-.fleet-box:hover .fleet-box-caption {
-  opacity: 1;
-}
-
-/* center content */
-.fleet-box-caption-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  transform: translate(-50%, -50%);
-  text-align: left;
-}
-
-.fleet-title {
-  margin: 0 0 12px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.fleet-specs {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.fleet-specs li {
-  margin: 6px 0;
-}
-
-@media (max-width: 767px) {
-  .fleet-box img { height: 260px; }
-  .fleet-box-caption-content { text-align: left; }
-}
-
-
-/* --- Credits footer section --- */
-section.credits {
-  padding: 18px 0;
-  background: #f8f8f8; /* subtle light background */
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-section.credits small {
-  display: inline-block;
-  line-height: 1.4;
-}
-
-// variables.less
-$theme-primary: #F05F40;
-$theme-dark: #222;
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "mixins",
-        "base"
-;
+    </div>
+  </div>
+</section>
