@@ -1,12 +1,17 @@
 # Site settings
-title:
-email:
+title: Science under Sail
 description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
 
-twitter_username:
-github_username:
+# Contact
+email: marie.hoensbroech@gmail.com
+
+# Profiles / research presence
+github_username: MarieHoensbroech
+orcid_id: "0000-0002-6329-3213"
+researchgate_url: "https://www.researchgate.net/profile/Marie-Hoensbroech-2"
+inaturalist_url: "https://www.inaturalist.org/people/marie-ho"
 
 # Build settings
 markdown: kramdown
