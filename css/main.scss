@@ -23,7 +23,21 @@ $theme-dark: #222;
    Custom additions for Science under Sail (your new features)
    Append-only, so it won’t break the original base styling.
    ========================================================== */
+/* Header subheader (the <p> under the headline) */
+header .header-content .header-content-inner p {
+  font-size: 20px;        /* was ~16px in many themes */
+  font-weight: 700;       /* bold */
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.2px;
+}
 
+/* Slightly larger on wider screens */
+@media (min-width: 768px) {
+  header .header-content .header-content-inner p {
+    font-size: 22px;
+  }
+}
 
 /* =========================
    Portfolio header spacing
