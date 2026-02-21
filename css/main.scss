@@ -114,6 +114,18 @@
 }
 
 
+/* --- Credits footer section --- */
+section.credits {
+  padding: 18px 0;
+  background: #f8f8f8; /* subtle light background */
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+section.credits small {
+  display: inline-block;
+  line-height: 1.4;
+}
+
 // variables.less
 $theme-primary: #F05F40;
 $theme-dark: #222;
