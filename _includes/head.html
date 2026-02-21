@@ -7,8 +7,13 @@
   <meta name="author" content="{{ site.author | default: '' }}">
 
   <title>{{ site.title | default: "Science under Sail" }}</title>
-  <link rel="icon" type="image/png" href="{{ '/img/icon/logo.ico' | relative_url }}">
-  <link rel="apple-touch-icon" href="{{ '/img/icon/logo.ico' | relative_url }}">
+
+<!-- Favicon (ICO) -->
+<link rel="icon" href="{{ '/img/icon/logo.ico' | relative_url }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ '/img/icon/logo.ico' | relative_url }}" type="image/x-icon">
+
+<!-- Apple touch icon (PNG recommended, ideally 180x180) -->
+<link rel="apple-touch-icon" href="{{ '/img/icon/logo.png' | relative_url }}">
 
   <!-- Bootstrap Core CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css" type="text/css">
