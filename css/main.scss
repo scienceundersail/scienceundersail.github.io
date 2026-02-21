@@ -1,391 +1,62 @@
-
 ---
 ---
 
-
-/*!
- * Science under Sail - main.css
- * Based on the "Creative" one-page Bootstrap theme styling approach.
- * Drop-in replacement for css/main.css
- */
+@charset "utf-8";
 
 /* =========================
-   Base / Typography
+   Theme variables (your originals)
    ========================= */
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  font-family: "Merriweather", "Helvetica Neue", Arial, sans-serif;
-  color: #222;
-  background-color: #fff;
-  -webkit-tap-highlight-color: #222;
-}
-
-hr {
-  max-width: 50px;
-  border-color: #f05f40;
-  border-width: 3px;
-}
-
-hr.light {
-  border-color: #fff;
-}
-
-a {
-  color: #f05f40;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
-
-a:hover,
-a:focus {
-  color: #eb3812;
-  text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-p {
-  margin-bottom: 20px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.text-faded {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.text-muted {
-  color: #777;
-}
+$theme-primary: #F05F40;
+$theme-dark: #222;
 
 /* =========================
-   Helpers / Spacing
+   Import partials from `sass_dir` (defaults to `_sass`)
+   These should contain the bulk of the original Creative styling.
    ========================= */
+@import
+  "mixins",
+  "base"
+;
 
-section {
-  padding: 100px 0;
-}
+/* ==========================================================
+   Custom additions for Science under Sail (your new features)
+   Append-only, so it won’t break the original base styling.
+   ========================================================== */
 
-.no-padding {
-  padding: 0;
-}
-
-.bg-primary {
-  background-color: #f05f40;
-}
-
-.bg-dark {
-  color: #fff;
-  background-color: #222;
-}
-
-.bg-light {
-  background-color: #f8f8f8;
-}
-
-.primary {
-  color: #f05f40;
-}
-
-.centered {
-  text-align: center;
-}
 
 /* =========================
-   Buttons
+   Portfolio header spacing
+   Keeps the grid edge-to-edge but gives the new heading room.
    ========================= */
-
-.btn {
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 300px;
-}
-
-.btn-xl {
-  padding: 15px 30px;
-}
-
-.btn-default {
-  color: #222;
-  background-color: #fff;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
-
-.btn-default:hover,
-.btn-default:focus {
-  color: #222;
-  background-color: #f2f2f2;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #f05f40;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  color: #fff;
-  background-color: #ee4b28;
-}
-
-/* =========================
-   Navbar
-   ========================= */
-
-.navbar-default {
-  border-color: rgba(34, 34, 34, .05);
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  background-color: #fff;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
-
-.navbar-default .navbar-header .navbar-brand {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #f05f40;
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-.navbar-default .nav > li > a,
-.navbar-default .nav > li > a:focus {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #222;
-}
-
-.navbar-default .nav > li > a:hover,
-.navbar-default .nav > li > a:focus:hover {
-  color: #f05f40;
-}
-
-.navbar-default .navbar-toggle {
-  font-weight: 700;
-  font-size: 12px;
-  color: #222;
-  text-transform: uppercase;
-}
-
-@media (min-width: 768px) {
-  .navbar-default {
-    border-color: rgba(255,255,255,.3);
-    background-color: transparent;
-  }
-
-  .navbar-default .navbar-header .navbar-brand {
-    color: rgba(255,255,255,.7);
-  }
-
-  .navbar-default .navbar-header .navbar-brand:hover,
-  .navbar-default .navbar-header .navbar-brand:focus {
-    color: #fff;
-  }
-
-  .navbar-default .nav > li > a,
-  .navbar-default .nav > li > a:focus {
-    color: rgba(255,255,255,.7);
-  }
-
-  .navbar-default .nav > li > a:hover,
-  .navbar-default .nav > li > a:focus:hover {
-    color: #fff;
-  }
-
-  /* Optional “shrink” look when scrolled (if your JS applies .affix) */
-  .navbar-default.affix {
-    border-color: rgba(34,34,34,.05);
-    background-color: #fff;
-  }
-
-  .navbar-default.affix .navbar-header .navbar-brand {
-    color: #f05f40;
-  }
-
-  .navbar-default.affix .nav > li > a,
-  .navbar-default.affix .nav > li > a:focus {
-    color: #222;
-  }
-
-  .navbar-default.affix .nav > li > a:hover,
-  .navbar-default.affix .nav > li > a:focus:hover {
-    color: #f05f40;
-  }
-}
-
-/* =========================
-   Header Hero
-   ========================= */
-
-header {
-  position: relative;
-  width: 100%;
-  min-height: auto;
-  text-align: center;
-  color: #fff;
-
-  /* Default background image (replace file if you like) */
-  background-image: url("../img/header.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-header .header-content {
-  position: relative;
-  width: 100%;
-  padding: 100px 15px;
-  text-align: center;
-}
-
-header .header-content .header-content-inner h1 {
-  margin-top: 0;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-header .header-content .header-content-inner hr {
-  margin: 30px auto;
-}
-
-header .header-content .header-content-inner p {
-  margin-bottom: 50px;
-  font-weight: 300;
-  color: rgba(255,255,255,.85);
-  font-size: 16px;
-}
-
-@media (min-width: 768px) {
-  header {
-    min-height: 100%;
-  }
-
-  header .header-content {
-    position: absolute;
-    top: 50%;
-    padding: 0 50px;
-    transform: translateY(-50%);
-  }
-
-  header .header-content .header-content-inner {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 1000px;
-  }
-
-  header .header-content .header-content-inner p {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 80%;
-    font-size: 18px;
-  }
-}
-
-/* =========================
-   Section headings
-   ========================= */
-
-.section-heading {
-  margin-top: 0;
-}
-
-/* =========================
-   Portfolio (tile grid + overlay)
-   ========================= */
-
 .portfolio-heading {
   padding-top: 60px;
   padding-bottom: 30px;
 }
 
-.no-gutter > [class*='col-'] {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.portfolio-box {
-  position: relative;
-  display: block;
-  max-width: 650px;
-  margin: 0 auto;
-}
-
-.portfolio-box .portfolio-box-caption {
-  position: absolute;
-  bottom: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  opacity: 0;
-  color: #fff;
-  background: rgba(240, 95, 64, 0.9);
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
-
-.portfolio-box:hover .portfolio-box-caption {
-  opacity: 1;
-}
-
-.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
-  text-align: center;
-}
-
-.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: none;
-  padding: 0 15px;
-}
-
-@media (min-width: 768px) {
-  .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-    font-size: 18px;
-  }
-}
-
-/* Uniform portfolio tile heights for mixed-size photos
-   Uses object-fit: cover so images fill the same-sized frame without distortion. */
+/* =========================
+   Portfolio: uniform tile heights (fix uneven image sizes)
+   object-fit: cover keeps aspect ratio and crops overflow.
+   ========================= */
 #portfolio .portfolio-box img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 260px;      /* adjust to taste */
+  object-fit: cover;  /* crop to uniform frame without distortion */
   display: block;
 }
 
-/* Responsive tweaks */
 @media (max-width: 991px) {
   #portfolio .portfolio-box img { height: 220px; }
 }
+
 @media (max-width: 767px) {
   #portfolio .portfolio-box img { height: 180px; }
 }
 
+
 /* =========================
-   Fleet (NEW): hover overlay cards
+   Fleet: hover overlay cards
+   Applies to the markup in _includes/fleet.html
    ========================= */
 
 .fleet-box {
@@ -398,15 +69,15 @@ header .header-content .header-content-inner p {
 
 .fleet-box img {
   width: 100%;
-  height: 360px;
-  object-fit: cover;
+  height: 360px;       /* uniform fleet image height */
+  object-fit: cover;   /* crop to uniform frame */
   display: block;
 }
 
 .fleet-box-caption {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(240, 95, 64, 0.92);
+  background: rgba(240, 95, 64, 0.92); /* matches $theme-primary */
   opacity: 0;
   transition: all 0.25s ease-in-out;
   color: #fff;
@@ -445,13 +116,13 @@ header .header-content .header-content-inner p {
   .fleet-box img { height: 260px; }
 }
 
-/* =========================
-   Profiles (icons)
-   ========================= */
 
+/* =========================
+   Profiles: make Font Awesome + Academicons match the theme color
+   ========================= */
 #profiles i.fa,
 #profiles i.ai {
-  color: #f05f40;
+  color: $theme-primary;
   margin-bottom: 12px;
 }
 
@@ -460,41 +131,17 @@ header .header-content .header-content-inner p {
   margin-bottom: 0;
 }
 
-/* =========================
-   Contact
-   ========================= */
-
-#contact p {
-  font-size: 16px;
-}
 
 /* =========================
    Credits section (bottom)
    ========================= */
-
 section.credits {
   padding: 18px 0;
   background: #f8f8f8;
   border-top: 1px solid rgba(0,0,0,0.06);
-}
 
-section.credits small {
-  display: inline-block;
-  line-height: 1.4;
-}
-
-/* =========================
-   Selection styling
-   ========================= */
-
-::selection {
-  color: #fff;
-  text-shadow: none;
-  background: #222;
-}
-
-::-moz-selection {
-  color: #fff;
-  text-shadow: none;
-  background: #222;
+  small {
+    display: inline-block;
+    line-height: 1.4;
+  }
 }
