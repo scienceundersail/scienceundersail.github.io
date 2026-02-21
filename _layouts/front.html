@@ -4,14 +4,26 @@
 {% include head.html %}
 
 <body id="page-top">
+
   {% include nav.html %}
   {% include header.html %}
-  {% include call-to-action.html %}
-  {% include portfolio.html %}
-  {% include services.html %}
-  {% include aside.html %}
-  {% include contact.html %}
-  {% include scripts.html %}
-</body>
 
+  <!-- “Fieldwork, from the sea.” section -->
+  {% include call-to-action.html %}
+
+  <!-- Fleet section (NEW) -->
+  {% include fleet.html %}
+
+  <!-- Portfolio -->
+  {% include portfolio.html %}
+
+  <!-- Profiles (your renamed “services” section) -->
+  {% include services.html %}
+
+  <!-- Contact -->
+  {% include contact.html %}
+
+  {% include scripts.html %}
+
+</body>
 </html>
