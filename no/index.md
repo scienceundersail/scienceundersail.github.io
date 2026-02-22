@@ -1,4 +1,3 @@
-
 ---
 layout: front-no
 lang: no
