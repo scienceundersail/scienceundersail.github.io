@@ -27,11 +27,10 @@
         <!-- Language dropdown (globe icon) -->
         <li class="dropdown navbar-lang">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-             aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+             aria-haspopup="true" aria-expanded="false" aria-label="Language">
             <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
             <span class="caret"></span>
           </a>
-
           <ul class="dropdown-menu dropdown-menu-right">
             {% if page.lang == "en" %}
               <li class="active">
@@ -46,4 +45,12 @@
                 <a href="{{ '/no/' | relative_url }}">Norsk <span class="lang-check">✓</span></a>
               </li>
             {% else %}
-              <li><
+              <li><a href="{{ '/no/' | relative_url }}">Norsk</a></li>
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
