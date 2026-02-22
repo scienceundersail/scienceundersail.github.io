@@ -1,14 +1,17 @@
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand page-scroll" href="#page-top">{{ site.title | default: "Science under Sail" }}</a>
+      <a class="navbar-brand page-scroll" href="#page-top">
+        {{ site.title | default: "Science under Sail" }}
+      </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -18,6 +21,25 @@
         <li><a class="page-scroll" href="#portfolio">Services</a></li>
         <li><a class="page-scroll" href="#profiles">References</a></li>
         <li><a class="page-scroll" href="#contact">Contact</a></li>
+
+        <!-- Language switcher -->
+        <li class="navbar-lang">
+          <div class="lang-switch">
+            <!-- EN link -->
+            {% if page.lang == "en" %}
+              <span class="lang-pill active" aria-current="true">EN</span>
+            {% else %}
+              <a class="lang-pill" href="{{ '/' | relative_url }}">EN</a>
+            {% endif %}
+
+            <!-- NO link -->
+            {% if page.lang == "no" %}
+              <span class="lang-pill active" aria-current="true">NO</span>
+            {% else %}
+              <a class="lang-pill" href="{{ '/no/' | relative_url }}">NO</a>
+            {% endif %}
+          </div>
+        </li>
       </ul>
     </div>
   </div>
