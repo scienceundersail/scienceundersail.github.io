@@ -1,7 +1,7 @@
 
 ---
 layout: default
-lang: en
-title: Science under Sail
+lang: no
+title: Science under Sail Norge
 permalink: /
 ---
