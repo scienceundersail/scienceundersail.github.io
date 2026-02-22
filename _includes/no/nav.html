@@ -1,20 +1,56 @@
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
+
     <div class="navbar-header">
-      <a class="navbar-brand page-scroll" href="#page-top">Science under Sail</a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ss-nav">
-        <span class="sr-only">Veksle navigasjon</span> ☰
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false" aria-controls="bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
+
+      <a class="navbar-brand page-scroll" href="#page-top">
+        {{ site.title | default: "Science under Sail" }}
+      </a>
     </div>
-    <div class="collapse navbar-collapse" id="ss-nav">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a class="page-scroll" href="#about">Om oss</a></li>
-        <li><a class="page-scroll" href="#services">Hva vi gjør</a></li>
-        <li><a class="page-scroll" href="#portfolio">Flåten</a></li>
+        <li><a class="page-scroll" href="#fleet">Flåten</a></li>
+        <li><a class="page-scroll" href="#portfolio">Tjenester</a></li>
+        <li><a class="page-scroll" href="#profiles">Referanser</a></li>
         <li><a class="page-scroll" href="#contact">Kontakt</a></li>
-        <!-- Språkbytte -->
-        <li><a href="{{ site.baseurl }}/">EN</a></li>
+
+        <!-- Language dropdown (globe icon) -->
+        <li class="dropdown navbar-lang">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            {% if page.lang == "en" %}
+              <li class="active">
+                <a href="{{ '/' | relative_url }}">English <span class="lang-check">✓</span></a>
+              </li>
+            {% else %}
+              <li><a href="{{ '/' | relative_url }}">English</a></li>
+            {% endif %}
+
+            {% if page.lang == "no" %}
+              <li class="active">
+                <a href="{{ '/no/' | relative_url }}">Norsk <span class="lang-check">✓</span></a>
+              </li>
+            {% else %}
+              <li><a href="{{ '/no/' | relative_url }}">Norsk</a></li>
+            {% endif %}
+          </ul>
+        </li>
       </ul>
     </div>
+
   </div>
 </nav>
