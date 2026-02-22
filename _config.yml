@@ -4,6 +4,9 @@ description: >-
   this means to ignore newlines until "baseurl:"
 baseurl: ""   # EMPTY for root domain!
 url: "https://scienceundersail.org"  # Your custom domain
+languages:
+  - en
+  - no
 
 # Contact
 email: info@scienceundersail.no
