@@ -1,0 +1,83 @@
+---
+layout: default
+title: 404 — becalmed
+permalink: /404.html
+---
+
+<style>
+  /* Inline tweaks specific to 404 */
+  .not-found {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
+                url('{{ "/assets/img/ocean-bg.jpg" | relative_url }}') center/cover no-repeat;
+    color: #fff;
+  }
+  .not-found .panel {
+    background: rgba(0,0,0,0.45);
+    border-radius: 8px;
+    padding: 32px 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .not-found h1 {
+    font-size: 44px;
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+  .not-found p.lead {
+    font-size: 20px;
+    margin-bottom: 20px;
+    opacity: .95;
+  }
+  .not-found .btn + .btn { margin-left: 10px; }
+  @media (max-width: 767px) {
+    .not-found h1 { font-size: 32px; }
+    .not-found p.lead { font-size: 18px; }
+    .not-found .btn + .btn { margin-left: 0; margin-top: 10px; display: block; }
+  }
+</style>
+
+<section class="not-found">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel">
+          <h1>Oops — we’re probably stuck in the doldrums.</h1>
+          <p class="lead">This link looks broken or the page drifted off course.</p>
+          <p class="lead">Go on deck for a fresh breeze, or jump straight to where you want to be.</p>
+
+          <div class="btn-group">
+            <a href="{{ '/' | relative_url }}#about" class="btn btn-primary btn-lg">Back to Home</a>
+            <a href="{{ '/' | relative_url }}#fleet" class="btn btn-default btn-lg">See the Fleet</a>
+            <a href="{{ '/' | relative_url }}#portfolio" class="btn btn-default btn-lg">Our Services</a>
+            <a href="{{ '/' | relative_url }}#contact" class="btn btn-default btn-lg">Contact Us</a>
+            <!-- Replace #map with your actual map URL when ready -->
+            <a href="{{ '/log/map' | relative_url }}" class="btn btn-info btn-lg">Logbook</a>
+          </div>
+
+          <hr style="border-color: rgba(255,255,255,.25); margin: 26px 0;">
+
+          <p>
+            <small>
+              If you think this is our mistake, please
+              <a href="{{ '/' | relative_url }}#contact" class="text-warning" style="text-decoration: underline;">let us know</a>.
+              We’ll tack and correct the course.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Optional: if a broken in-page anchor sent you here, offer a gentle nudge back to top.
+  (function() {
+    if (document.referrer && document.referrer.indexOf(location.origin) === 0) {
+      console.warn("Broken link from:", document.referrer);
+    }
+  })();
+</script>
