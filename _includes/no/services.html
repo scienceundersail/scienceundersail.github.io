@@ -1,30 +1,43 @@
-<section id="services">
+<section id="profiles">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Hva vi gjør</h2>
+        <h2 class="section-heading">Refanser</h2>
         <hr class="primary">
+        <p class="text-muted">
+          Finn publikasjonene, datasettene og feltobservasjonene våre her.
+        </p>
       </div>
     </div>
 
-    <div class="row text-center">
+    <div class="row">
 
-      <div class="col-md-4">
-        <i class="fa fa-flask fa-4x text-primary"></i>
-        <h3>Feltarbeid & prøvetaking</h3>
-        <p class="text-muted">Planlegging, prøver, målinger og dokumentasjon i kystsonen.</p>
+      <div class="col-lg-3 col-md-6 text-center">
+        <a href="{{ site.inaturalist_url }}" target="_blank" rel="noopener">
+          <i class="ai ai-inaturalist ai-3x wow bounceIn" data-wow-delay=".1s" aria-hidden="true"></i>
+          <h3>iNaturalist</h3>
+        </a>
       </div>
 
-      <div class="col-md-4">
-        <i class="fa fa-bar-chart fa-4x text-primary"></i>
-        <h3>Data & analyse</h3>
-        <p class="text-muted">Datavask, analyse og visualisering – fra rådata til resultater.</p>
+      <div class="col-lg-3 col-md-6 text-center">
+        <a href="{{ site.researchgate_url }}" target="_blank" rel="noopener">
+          <i class="ai ai-researchgate ai-3x wow bounceIn" data-wow-delay=".2s" aria-hidden="true"></i>
+          <h3>ResearchGate</h3>
+        </a>
       </div>
 
-      <div class="col-md-4">
-        <i class="fa fa-ship fa-4x text-primary"></i>
-        <h3>Ekspedisjonsstøtte</h3>
-        <p class="text-muted">Seilbåtbåren logistikk, dykke-/klatrestøtte og sikker gjennomføring.</p>
+      <div class="col-lg-3 col-md-6 text-center">
+        <a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" rel="noopener">
+          <i class="ai ai-orcid ai-3x wow bounceIn" data-wow-delay=".3s" aria-hidden="true"></i>
+          <h3>ORCID</h3>
+        </a>
+      </div>
+
+      <div class="col-lg-3 col-md-6 text-center">
+        <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">
+          <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".4s" aria-hidden="true"></i>
+          <h3>GitHub</h3>
+        </a>
       </div>
 
     </div>
