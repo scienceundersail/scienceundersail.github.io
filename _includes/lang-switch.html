@@ -1,0 +1,8 @@
+{%- comment -%}
+EN site (.org) → NO site (.no) language switch.
+If you have a special mapped URL for this page, set it in front matter:
+alt_nb: "https://scienceundersail.no/særsti/"
+Otherwise, we keep the same path across domains.
+{%- endcomment -%}
+{% assign nb_url = page.alt_nb | default: 'https://scienceundersail.no' | append: (page.alt_nb ? '' : page.url) %}
+<a class="lang lang-nb" href="{{ nb_url | escape }}">Norsk</a>
