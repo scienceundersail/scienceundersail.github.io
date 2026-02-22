@@ -23,7 +23,10 @@ $theme-dark: #222;
    Custom additions for Science under Sail (your new features)
    Append-only, so it won’t break the original base styling.
    ========================================================== */
-/* Header subheader (the <p> under the headline) */
+
+/* ---------------------------------
+   Header subheader (the <p> under the headline)
+   --------------------------------- */
 header .header-content .header-content-inner p {
   font-size: 20px;        /* was ~16px in many themes */
   font-weight: 700;       /* bold */
@@ -32,26 +35,25 @@ header .header-content .header-content-inner p {
   letter-spacing: 0.2px;
 }
 
-/* Slightly larger on wider screens */
 @media (min-width: 768px) {
   header .header-content .header-content-inner p {
     font-size: 22px;
   }
 }
 
-/* =========================
+/* ---------------------------------
    Portfolio header spacing
    Keeps the grid edge-to-edge but gives the new heading room.
-   ========================= */
+   --------------------------------- */
 .portfolio-heading {
   padding-top: 60px;
   padding-bottom: 30px;
 }
 
-/* =========================
+/* ---------------------------------
    Portfolio: uniform tile heights (fix uneven image sizes)
    object-fit: cover keeps aspect ratio and crops overflow.
-   ========================= */
+   --------------------------------- */
 #portfolio .portfolio-box img {
   width: 100%;
   height: 260px;      /* adjust to taste */
@@ -67,11 +69,10 @@ header .header-content .header-content-inner p {
   #portfolio .portfolio-box img { height: 180px; }
 }
 
-
-/* =========================
+/* ---------------------------------
    Fleet: hover overlay cards
    Applies to the markup in _includes/fleet.html
-   ========================= */
+   --------------------------------- */
 
 .fleet-box {
   position: relative;
@@ -91,7 +92,7 @@ header .header-content .header-content-inner p {
 .fleet-box-caption {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(240, 95, 64, 0.92); /* matches $theme-primary */
+  background: rgba($theme-primary, 0.92);
   opacity: 0;
   transition: all 0.25s ease-in-out;
   color: #fff;
@@ -130,10 +131,9 @@ header .header-content .header-content-inner p {
   .fleet-box img { height: 260px; }
 }
 
-
-/* =========================
+/* ---------------------------------
    Profiles: make Font Awesome + Academicons match the theme color
-   ========================= */
+   --------------------------------- */
 #profiles i.fa,
 #profiles i.ai {
   color: $theme-primary;
@@ -145,10 +145,9 @@ header .header-content .header-content-inner p {
   margin-bottom: 0;
 }
 
-
-/* =========================
+/* ---------------------------------
    Credits section (bottom)
-   ========================= */
+   --------------------------------- */
 section.credits {
   padding: 18px 0;
   background: #f8f8f8;
@@ -160,6 +159,9 @@ section.credits {
   }
 }
 
+/* ---------------------------------
+   Typography
+   --------------------------------- */
 html, body,
 h1, h2, h3, h4, h5, h6,
 .navbar, .navbar-nav, .navbar-brand,
@@ -167,33 +169,89 @@ h1, h2, h3, h4, h5, h6,
   font-family: "EB Garamond", Garamond, Georgia, serif;
 }
 
-/* Language switcher pills */
-.navbar-lang { padding-left: 12px; }
-.lang-switch {
-  display: inline-flex;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 999px;
-  overflow: hidden;
-  background: #fff;
-}
+/* =================================================================
+   LANGUAGE SWITCHER — DROPDOWN (globe icon)
+   Replaces the previous EN/NO pill styles
+   ================================================================= */
+
+/* Remove the old pill styles if present (safe no-ops if not used anymore) */
+.navbar-lang { padding-left: 0; } /* we’ll handle spacing below */
+.lang-switch,
 .lang-pill {
-  display: inline-block;
-  padding: 6px 10px;
-  font-size: 12px;
-  line-height: 1;
-  text-decoration: none;
+  /* deprecated — kept to avoid CSS errors if markup lingers */
+}
+
+/* Positioning & spacing for the dropdown as last navbar item */
+.navbar-lang.dropdown {
+  margin-left: 10px;
+}
+
+/* Tweak the trigger (globe + caret) */
+.navbar-lang > a {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.navbar-lang > a .glyphicon-globe,
+.navbar-lang > a .fa-globe {
+  font-size: 16px;
+  vertical-align: -1px;
+  margin-right: 2px;
+  color: #777; /* matches default Bootstrap navbar link color */
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: transparent; /* keep it clean */
+  color: #555;
+}
+
+/* Dropdown menu */
+.navbar-lang .dropdown-menu {
+  min-width: 180px;
+  padding: 6px 0;
+  border-color: rgba(0,0,0,.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  right: 0; /* ensure right-aligned if .dropdown-menu-right not applied */
+  left: auto;
+}
+
+.navbar-lang .dropdown-menu > li > a {
+  padding: 8px 16px;
+  line-height: 1.25;
   color: #333;
-  background: transparent;
 }
-.lang-pill + .lang-pill,
-.lang-pill + span.lang-pill { border-left: 1px solid rgba(0,0,0,.12); }
-.lang-pill:hover { background: #f5f5f5; color: #111; }
-.lang-pill.active {
-  background: #222;
-  color: #fff;
-  cursor: default;
+
+.navbar-lang .dropdown-menu > li > a:hover,
+.navbar-lang .dropdown-menu > li > a:focus {
+  background: #f5f5f5;
+  color: #111;
 }
+
+/* Active/current language */
+.navbar-lang .dropdown-menu > li.active > a,
+.navbar-lang .dropdown-menu > li.active > a:hover,
+.navbar-lang .dropdown-menu > li.active > a:focus {
+  font-weight: 600;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.navbar-lang .lang-check {
+  float: right;
+  color: #2c7; /* subtle success tick */
+}
+
+/* Mobile tweaks (in collapsed menu) */
 @media (max-width: 767px) {
-  .navbar-lang { padding: 8px 0 0; }
-  .lang-switch { margin-top: 6px; }
+  .navbar-lang.dropdown {
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  .navbar-lang .dropdown-menu {
+    min-width: 100%;
+    box-shadow: none; /* Bootstrap collapses vertically; keep it flat */
+    border-radius: 0;
+  }
 }
