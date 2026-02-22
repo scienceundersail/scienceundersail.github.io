@@ -24,40 +24,38 @@
         <li><a class="page-scroll" href="#profiles">References</a></li>
         <li><a class="page-scroll" href="#contact">Contact</a></li>
 
+        {%- comment -%} Compute language URLs {%- endcomment -%}
+        {%- assign en_url = page.url | absolute_url -%}
+        {%- if page.alt_nb -%}
+          {%- assign nb_url = page.alt_nb -%}
+        {%- else -%}
+          {%- assign nb_url = 'https://scienceundersail.no' | append: page.url -%}
+        {%- endif -%}
+
         <!-- Language dropdown (globe icon) -->
-{%- comment -%} Current page (English) URL on .org {%- endcomment -%}
-{%- assign en_url = page.url | absolute_url -%}
+        <li class="dropdown navbar-lang">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false" aria-label="Language">
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            <span class="caret"></span>
+          </a>
 
-{%- comment -%}
-Compute Norsk target on .no:
-- If this page defines a specific counterpart, use page.alt_nb.
-- Otherwise, mirror the same path across domains.
-{%- endcomment -%}
-{%- if page.alt_nb %}
-  {%- assign nb_url = page.alt_nb -%}
-{%- else %}
-  {%- assign nb_url = 'https://scienceundersail.no' | append: page.url -%}
-{%- endif -%}
+          <ul class="dropdown-menu dropdown-menu-right">
+            {%- if page.lang == "en" -%}
+              <li class="active"><a href="{{ en_url }}">English <span class="lang-check">✓</span></a></li>
+            {%- else -%}
+              <li><a href="{{ en_url }}">English</a></li>
+            {%- endif -%}
 
-<li class="dropdown navbar-lang">
-  #
-    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu dropdown-menu-right">
-    {%- if page.lang == "en" -%}
-      <li class="active">{{ en_url }}English <span class="lang-check">✓</span></a></li>
-    {%- else -%}
-      <li>{{ en_url }}English</a></li>
-    {%- endif -%}
+            {%- if page.lang == "nb" -%}
+              <li class="active"><a href="{{ nb_url }}">Norsk <span class="lang-check">✓</span></a></li>
+            {%- else -%}
+              <li><a href="{{ nb_url }}">Norsk</a></li>
+            {%- endif -%}
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-    {%- if page.lang == "nb" -%}
-      <li class="active">{{ nb_url }}Norsk <span class="lang-check">✓</span></a></li>
-    {%- else -%}
-      <li>{{ nb_url }}Norsk</a></li>
-    {%- endif -%}
-  </ul>
-</li>
-
-  </ul>
-</li>
+  </div>
+</nav>
