@@ -18,15 +18,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="page-scroll" href="#about">Home</a></li>
+        <li><a class="page-scroll" href="#about">About</a></li>
         <li><a class="page-scroll" href="#fleet">Fleet</a></li>
         <li><a class="page-scroll" href="#portfolio">Services</a></li>
         <li><a class="page-scroll" href="#profiles">References</a></li>
         <li><a class="page-scroll" href="#contact">Contact</a></li>
 
         <!-- Language dropdown (globe icon) -->
-        <!-- inside your globe dropdown -->
-{% include lang-switch.html %}
         <li class="dropdown navbar-lang">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
              aria-haspopup="true" aria-expanded="false" aria-label="Language">
@@ -34,21 +32,33 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            {% if page.lang == "en" %}
-              <li class="active">
-                <a href="{{ '/' | relative_url }}">English <span class="lang-check">✓</span></a>
-              </li>
-            {% else %}
-              <li><a href="{{ '/' | relative_url }}">English</a></li>
-            {% endif %}
 
-            {% if page.lang == "no" %}
+            {%- comment -%}
+            Current language: English (.org)
+            Self URL = absolute URL for this page on .org
+            {%- endcomment -%}
+            {%- assign en_url = page.url | absolute_url -%}
+            {%- if page.lang == "en" -%}
               <li class="active">
-                <a href="{{ '/no/' | relative_url }}">Norsk <span class="lang-check">✓</span></a>
+                <a href="{{ en_url }}">English <span class="lang-check">✓</span></a>
               </li>
-            {% else %}
-              <li><a href="{{ '/no/' | relative_url }}">Norsk</a></li>
-            {% endif %}
+            {%- else -%}
+              <li><a href="{{ en_url }}">English</a></li>
+            {%- endif -%}
+
+            {%- comment -%}
+            Cross‑domain Norsk target:
+            Use per‑page override `alt_nb` if present; otherwise mirror the same `page.url`.
+            {%- endcomment -%}
+            {%- assign nb_url = page.alt_nb | default: 'https://scienceundersail.no' | append: (page.alt_nb ? '' : page.url) -%}
+            {%- if page.lang == "nb" -%}
+              <li class="active">
+                <a href="{{ nb_url }}">Norsk <span class="lang-check">✓</span></a>
+              </li>
+            {%- else -%}
+              <li><a href="{{ nb_url }}">Norsk</a></li>
+            {%- endif -%}
+
           </ul>
         </li>
       </ul>
