@@ -25,44 +25,32 @@
         <li><a class="page-scroll" href="#contact">Contact</a></li>
 
         <!-- Language dropdown (globe icon) -->
-        <li class="dropdown navbar-lang">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-             aria-haspopup="true" aria-expanded="false" aria-label="Language">
-            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right">
+<li class="dropdown navbar-lang">
+  #
+    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right">
 
-            {%- comment -%}
-            Current language: English (.org)
-            Self URL = absolute URL for this page on .org
-            {%- endcomment -%}
-            {%- assign en_url = page.url | absolute_url -%}
-            {%- if page.lang == "en" -%}
-              <li class="active">
-                <a href="{{ en_url }}">English <span class="lang-check">✓</span></a>
-              </li>
-            {%- else -%}
-              <li><a href="{{ en_url }}">English</a></li>
-            {%- endif -%}
+    {%- comment -%}Current page on .org (English){%- endcomment -%}
+    {%- assign en_url = page.url | absolute_url -%}
+    {%- if page.lang == "en" -%}
+      <li class="active">{{ en_url }}English <span class="lang-check">✓</span></a></li>
+    {%- else -%}
+      <li>{{ en_url }}English</a></li>
+    {%- endif -%}
 
-            {%- comment -%}
-            Cross‑domain Norsk target:
-            Use per‑page override `alt_nb` if present; otherwise mirror the same `page.url`.
-            {%- endcomment -%}
-            {%- assign nb_url = page.alt_nb | default: 'https://scienceundersail.no' | append: (page.alt_nb ? '' : page.url) -%}
-            {%- if page.lang == "nb" -%}
-              <li class="active">
-                <a href="{{ nb_url }}">Norsk <span class="lang-check">✓</span></a>
-              </li>
-            {%- else -%}
-              <li><a href="{{ nb_url }}">Norsk</a></li>
-            {%- endif -%}
+    {%- comment -%}
+    Norsk target on .no:
+    - If this page has a specific counterpart, set in front matter: alt_nb: "https://scienceundersail.no/annen-sti/"
+    - Otherwise, mirror the same path across domains.
+    {%- endcomment -%}
+    {%- assign nb_url = page.alt_nb | default: 'https://scienceundersail.no' | append: (page.alt_nb ? '' : page.url) -%}
+    {%- if page.lang == "nb" -%}
+      <li class="active">{{ nb_url }}Norsk <span class="lang-check">✓</span></a></li>
+    {%- else -%}
+      <li>{{ nb_url }}Norsk</a></li>
+    {%- endif -%}
 
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
+  </ul>
+</li>
