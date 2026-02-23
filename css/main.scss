@@ -1,35 +1,14 @@
----
----
-
-@charset "utf-8";
-
-/* =========================
-   Theme variables (your originals)
-   ========================= */
-
-$theme-primary: #F05F40;
-$theme-dark: #222;
-
-/* =========================
-   Import partials from `sass_dir` (defaults to `_sass`)
-   These should contain the bulk of the original Creative styling.
-   ========================= */
-@import
-  "mixins",
-  "base"
-;
-
 /* ==========================================================
-   Custom additions for Science under Sail (your new features)
-   Append-only, so it won’t break the original base styling.
+   Science under Sail – Main stylesheet (pure CSS)
+   Includes navbar language dropdown and mobile fixes for BS3
    ========================================================== */
 
 /* ---------------------------------
    Header subheader (the <p> under the headline)
    --------------------------------- */
 header .header-content .header-content-inner p {
-  font-size: 20px;        /* was ~16px in many themes */
-  font-weight: 700;       /* bold */
+  font-size: 20px;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
   letter-spacing: 0.2px;
@@ -43,7 +22,6 @@ header .header-content .header-content-inner p {
 
 /* ---------------------------------
    Portfolio header spacing
-   Keeps the grid edge-to-edge but gives the new heading room.
    --------------------------------- */
 .portfolio-heading {
   padding-top: 60px;
@@ -51,13 +29,12 @@ header .header-content .header-content-inner p {
 }
 
 /* ---------------------------------
-   Portfolio: uniform tile heights (fix uneven image sizes)
-   object-fit: cover keeps aspect ratio and crops overflow.
+   Portfolio: uniform tile heights
    --------------------------------- */
 #portfolio .portfolio-box img {
   width: 100%;
-  height: 260px;      /* adjust to taste */
-  object-fit: cover;  /* crop to uniform frame without distortion */
+  height: 260px;
+  object-fit: cover;
   display: block;
 }
 
@@ -71,9 +48,7 @@ header .header-content .header-content-inner p {
 
 /* ---------------------------------
    Fleet: hover overlay cards
-   Applies to the markup in _includes/fleet.html
    --------------------------------- */
-
 .fleet-box {
   position: relative;
   display: block;
@@ -84,15 +59,15 @@ header .header-content .header-content-inner p {
 
 .fleet-box img {
   width: 100%;
-  height: 360px;       /* uniform fleet image height */
-  object-fit: cover;   /* crop to uniform frame */
+  height: 360px;
+  object-fit: cover;
   display: block;
 }
 
 .fleet-box-caption {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba($theme-primary, 0.92);
+  background: rgba(240, 95, 64, 0.92); /* theme primary w/ alpha */
   opacity: 0;
   transition: all 0.25s ease-in-out;
   color: #fff;
@@ -132,11 +107,11 @@ header .header-content .header-content-inner p {
 }
 
 /* ---------------------------------
-   Profiles: make Font Awesome + Academicons match the theme color
+   Profiles: theme-colored icons
    --------------------------------- */
 #profiles i.fa,
 #profiles i.ai {
-  color: $theme-primary;
+  color: #F05F40; /* theme primary */
   margin-bottom: 12px;
 }
 
@@ -152,11 +127,11 @@ section.credits {
   padding: 18px 0;
   background: #f8f8f8;
   border-top: 1px solid rgba(0,0,0,0.06);
+}
 
-  small {
-    display: inline-block;
-    line-height: 1.4;
-  }
+section.credits small {
+  display: inline-block;
+  line-height: 1.4;
 }
 
 /* ---------------------------------
@@ -170,23 +145,18 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* =================================================================
-   LANGUAGE SWITCHER — DROPDOWN (globe icon)
-   Keeps dropdown; adds mobile-friendly + fallback behavior
+   LANGUAGE SWITCHER — DROPDOWN (globe icon) for Bootstrap 3 navbar
    ================================================================= */
 
-/* Remove the old pill styles if present (safe no-ops if not used anymore) */
-.navbar-lang { padding-left: 0; } /* spacing handled below */
-.lang-switch,
-.lang-pill {
-  /* deprecated — kept to avoid CSS errors if markup lingers */
-}
+/* Spacing for the dropdown item at the end of the navbar */
+.navbar-lang { padding-left: 0; }
+.lang-switch, .lang-pill { /* legacy placeholders; safe no-ops */ }
 
-/* Positioning & spacing for the dropdown as last navbar item */
 .navbar-lang.dropdown {
   margin-left: 10px;
 }
 
-/* Tweak the trigger (globe + caret) */
+/* Toggle (anchor or button) */
 .navbar-lang > a,
 .navbar-lang > button {
   padding-right: 10px;
@@ -195,6 +165,7 @@ h1, h2, h3, h4, h5, h6,
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Icon appearance */
 .navbar-lang > a .glyphicon-globe,
 .navbar-lang > a .fa-globe,
 .navbar-lang > button .glyphicon-globe,
@@ -209,17 +180,17 @@ h1, h2, h3, h4, h5, h6,
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
-  background-color: transparent; /* keep it clean */
+  background-color: transparent;
   color: #555;
 }
 
-/* Dropdown menu */
+/* Dropdown menu (desktop baseline) */
 .navbar-lang .dropdown-menu {
   min-width: 180px;
   padding: 6px 0;
   border-color: rgba(0,0,0,.12);
   box-shadow: 0 6px 18px rgba(0,0,0,.12);
-  right: 0; /* ensure right-aligned if .dropdown-menu-right not applied */
+  right: 0;       /* right-align menu if dropdown-menu-right not applied */
   left: auto;
 }
 
@@ -236,7 +207,7 @@ h1, h2, h3, h4, h5, h6,
   color: #111;
 }
 
-/* Active/current language */
+/* Current language visual */
 .navbar-lang .dropdown-menu > li.active > a,
 .navbar-lang .dropdown-menu > li.active > a:hover,
 .navbar-lang .dropdown-menu > li.active > a:focus {
@@ -247,12 +218,14 @@ h1, h2, h3, h4, h5, h6,
 
 .navbar-lang .lang-check {
   float: right;
-  color: #2c7; /* subtle success tick */
+  color: #22cc77; /* subtle success tick */
 }
 
-/* Mobile tweaks (in collapsed menu) */
+/* -----------------------------------------------------------------
+   Mobile behavior (Bootstrap 3 collapse)
+   ----------------------------------------------------------------- */
 @media (max-width: 767px) {
-  /* In collapsed navbar, Bootstrap expects dropdown menus to be "static" */
+  /* In collapsed navbar, render dropdown menus inline/stacked */
   .navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
@@ -270,18 +243,18 @@ h1, h2, h3, h4, h5, h6,
 
   .navbar-lang .dropdown-menu {
     min-width: 100%;
-    box-shadow: none; /* Bootstrap collapses vertically; keep it flat */
+    box-shadow: none;
     border-radius: 0;
     right: auto;
     left: 0;
   }
 
-  /* CSS-only fallback: open when the parent has focus (tap) */
+  /* CSS-only fallback: keep dropdown visible while focused/tapped */
   .navbar-lang:focus-within .dropdown-menu {
     display: block;
   }
 
-  /* Make sure the toggle itself can receive focus */
+  /* Ensure the toggle itself can receive focus on mobile */
   .navbar-lang > a,
   .navbar-lang > button {
     outline: none;
@@ -291,9 +264,11 @@ h1, h2, h3, h4, h5, h6,
 /* -----------------------------------------------------------------
    Safety nets for visibility and stacking
    ----------------------------------------------------------------- */
-.navbar .dropdown-menu { z-index: 2000; }   /* keep above page content */
 
-/* If any ancestor introduced clipping, ensure the navbar shows menus */
+/* Keep menus above nearby content */
+.navbar .dropdown-menu { z-index: 2000; }
+
+/* Avoid clipping if a parent sets overflow */
 .navbar,
 .navbar .container,
 .navbar .container-fluid,
@@ -301,7 +276,7 @@ h1, h2, h3, h4, h5, h6,
   overflow: visible;
 }
 
-/* Optional: neutralize Bootstrap's dropdown backdrop if it ever overlaps */
+/* If a touch backdrop ever overlaps the menu in BS3 */
 .dropdown-backdrop {
   position: static;
 }
