@@ -173,140 +173,112 @@ h1, h2, h3, h4, h5, h6,
    LANGUAGE SWITCHER — DROPDOWN (globe icon)
    Keeps dropdown; adds mobile-friendly + fallback behavior
    ================================================================= */
+<!-- NAVBAR (Bootstrap 3) -->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
 
-/* Remove the old pill styles if present (safe no-ops if not used anymore) */
-.navbar-lang { padding-left: 0; } /* spacing is handled below */
-.lang-switch,
-.lang-pill {
-  /* deprecated — kept to avoid CSS errors if markup lingers */
-}
+    <!-- Brand and hamburger -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#mainNavCollapse"
+              aria-expanded="false"
+              aria-controls="mainNavCollapse">
+        <span class="sr-only">Veksle navigasjon</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
-/* Positioning & spacing for the dropdown as last navbar item */
-.navbar-lang.dropdown {
-  margin-left: 10px;
-}
+      <a class="navbar-brand page-scroll" href="#page-top">
+        {{ site.title | default: "Science under Sail" }}
+      </a>
+    </div>
 
-/* Tweak the trigger (globe + caret) */
-.navbar-lang > a,
-.navbar-lang > button {
-  padding-right: 10px;
-  padding-left: 10px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="page-scroll" href="#about"     title="Om oss">Om oss</a></li>
+        <li><a class="page-scroll" href="#fleet"     title="Flåten">Flåten</a></li>
+        <li><a class="page-scroll" href="#portfolio" title="Tjenester">Tjenester</a></li>
+        <li><a class="page-scroll" href="#profiles"  title="Referanser">Referanser</a></li>
+        <li><a class="page-scroll" href="#contact"   title="Kontakt">Kontakt</a></li>
 
-.navbar-lang > a .glyphicon-globe,
-.navbar-lang > a .fa-globe,
-.navbar-lang > button .glyphicon-globe,
-.navbar-lang > button .fa-globe {
-  font-size: 16px;
-  vertical-align: -1px;
-  margin-right: 2px;
-  color: #777; /* matches default Bootstrap navbar link color */
-}
+        {% comment %} compute language targets {% endcomment %}
+        {% assign nb_url = page.url | absolute_url %}
+        {% if page.alt_en %}
+          {% assign en_url = page.alt_en %}
+        {% else %}
+          {% assign en_url = 'https://scienceundersail.org' | append: page.url %}
+        {% endif %}
 
-/* Active/open state link colors (Bootstrap 3 navbar-default) */
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:focus,
-.navbar-default .navbar-nav > .open > a:hover {
-  background-color: transparent; /* keep it clean */
-  color: #555;
-}
+        <!-- Language dropdown (globe) -->
+        <li class="dropdown navbar-lang">
+          <!-- NOTE: no 'page-scroll' class here -->
+          <a id="langDropdown" href="#" class="dropdown-toggle"
+             data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false"
+             aria-label="Language">
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            {% if page.lang == "en" %}
+              <li class="active"><a href="{{ en_url }}">English <span class="lang-check">✓</span></a></li>
+            {% else %}
+              <li><a href="{{ en_url }}">English</a></li>
+            {% endif %}
 
-/* Dropdown menu (desktop baseline) */
-.navbar-lang .dropdown-menu {
-  min-width: 180px;
-  padding: 6px 0;
-  border-color: rgba(0,0,0,.12);
-  box-shadow: 0 6px 18px rgba(0,0,0,.12);
-  right: 0; /* ensure right-aligned if .dropdown-menu-right not applied */
-  left: auto;
-}
+            {% if page.lang == "nb" %}
+              <li class="active"><a href="{{ nb_url }}">Norsk <span class="lang-check">✓</span></a></li>
+            {% else %}
+              <li><a href="{{ nb_url }}">Norsk</a></li>
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-/* Dropdown items */
-.navbar-lang .dropdown-menu > li > a {
-  padding: 8px 16px;
-  line-height: 1.25;
-  color: #333;
-}
+<!-- =============================
+     GUARD: place AFTER jQuery + bootstrap.min.js + your smooth-scroll
+     ============================= -->
+<script>
+  (function () {
+    // 1) If any dropdown toggle accidentally has 'page-scroll', remove it
+    var accidental = document.querySelectorAll('a.dropdown-toggle.page-scroll');
+    for (var i = 0; i < accidental.length; i++) accidental[i].classList.remove('page-scroll');
 
-.navbar-lang .dropdown-menu > li > a:hover,
-.navbar-lang .dropdown-menu > li > a:focus {
-  background: #f5f5f5;
-  color: #111;
-}
+    // 2) Force the dropdown toggle to fire before other handlers (capture phase),
+    //    then prevent the '#' jump so smooth-scroll can't hijack it
+    document.addEventListener('click', function (e) {
+      var target = e.target;
+      if (!target) return;
+      // Find closest .dropdown-toggle (works for nested icons/spans)
+      while (target && target !== document && !/\bdropdown-toggle\b/.test(target.className || '')) {
+        target = target.parentNode;
+      }
+      if (!target || target === document) return;
 
-/* Active/current language */
-.navbar-lang .dropdown-menu > li.active > a,
-.navbar-lang .dropdown-menu > li.active > a:hover,
-.navbar-lang .dropdown-menu > li.active > a:focus {
-  font-weight: 600;
-  background: #f5f5f5;
-  color: #222;
-}
+      // Toggle via Bootstrap 3 plugin if available
+      if (window.jQuery && jQuery.fn && jQuery.fn.dropdown) {
+        jQuery(target).dropdown('toggle');
+      } else {
+        // Fallback: emulate open/close
+        var parent = target.closest ? target.closest('.dropdown') : null;
+        if (parent) {
+          if (/\bopen\b/.test(parent.className)) {
+            parent.className = parent.className.replace(/\bopen\b/, '').trim();
+          } else {
+            parent.className += ' open';
+          }
+        }
+      }
 
-.navbar-lang .lang-check {
-  float: right;
-  color: #2c7; /* subtle success tick */
-}
-
-/* -----------------------------------------------------------------
-   Mobile behavior (Bootstrap 3 collapse):
-   - Make dropdown menus render inline
-   - CSS-only fallback via :focus-within (helps if JS click is hijacked)
-   ----------------------------------------------------------------- */
-@media (max-width: 767px) {
-  /* In collapsed navbar, Bootstrap expects dropdown menus to be "static" */
-  .navbar-nav .open .dropdown-menu {
-    position: static;
-    float: none;
-    width: auto;
-    margin-top: 0;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-  }
-
-  /* Our language dropdown specifics */
-  .navbar-lang.dropdown {
-    margin-left: 0;
-    margin-top: 4px;
-  }
-
-  .navbar-lang .dropdown-menu {
-    min-width: 100%;
-    box-shadow: none; /* Bootstrap collapses vertically; keep it flat */
-    border-radius: 0;
-    right: auto;
-    left: 0;
-  }
-
-  /* CSS-only fallback: open when the parent has focus (tap) */
-  .navbar-lang:focus-within .dropdown-menu {
-    display: block;
-  }
-
-  /* Make sure the toggle itself can receive focus */
-  .navbar-lang > a,
-  .navbar-lang > button {
-    outline: none;
-  }
-}
-
-/* -----------------------------------------------------------------
-   Safety nets for visibility and stacking
-   ----------------------------------------------------------------- */
-.navbar .dropdown-menu { z-index: 2000; }   /* keep above page content */
-
-/* If any ancestor introduced clipping, ensure the navbar shows menus */
-.navbar,
-.navbar .container,
-.navbar .container-fluid,
-.navbar .navbar-collapse {
-  overflow: visible;
-}
-
-/* Optional: neutralize Bootstrap's dropdown backdrop if it ever overlaps */
-.dropdown-backdrop {
-  position: static;
-}
+      // Stop the default '#' jump and keep other handlers from swallowing the tap
+      e.preventDefault();
+      e.stopPropagation();
+    }, true); // capture = run before other click handlers
+  })();
+</script>
