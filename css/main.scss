@@ -1,6 +1,6 @@
 /* ==========================================================
    Science under Sail – Main stylesheet (pure CSS)
-   Includes navbar language dropdown and mobile fixes for BS3
+   Works with Bootstrap 3.4.1
    ========================================================== */
 
 /* ---------------------------------
@@ -13,11 +13,8 @@ header .header-content .header-content-inner p {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
   letter-spacing: 0.2px;
 }
-
 @media (min-width: 768px) {
-  header .header-content .header-content-inner p {
-    font-size: 22px;
-  }
+  header .header-content .header-content-inner p { font-size: 22px; }
 }
 
 /* ---------------------------------
@@ -37,11 +34,9 @@ header .header-content .header-content-inner p {
   object-fit: cover;
   display: block;
 }
-
 @media (max-width: 991px) {
   #portfolio .portfolio-box img { height: 220px; }
 }
-
 @media (max-width: 767px) {
   #portfolio .portfolio-box img { height: 180px; }
 }
@@ -56,27 +51,21 @@ header .header-content .header-content-inner p {
   margin: 0 0 30px;
   overflow: hidden;
 }
-
 .fleet-box img {
   width: 100%;
   height: 360px;
   object-fit: cover;
   display: block;
 }
-
 .fleet-box-caption {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(240, 95, 64, 0.92); /* theme primary w/ alpha */
+  background: rgba(240, 95, 64, 0.92);
   opacity: 0;
   transition: all 0.25s ease-in-out;
   color: #fff;
 }
-
-.fleet-box:hover .fleet-box-caption {
-  opacity: 1;
-}
-
+.fleet-box:hover .fleet-box-caption { opacity: 1; }
 .fleet-box-caption-content {
   position: absolute;
   top: 50%;
@@ -85,23 +74,13 @@ header .header-content .header-content-inner p {
   transform: translate(-50%, -50%);
   text-align: left;
 }
-
 .fleet-title {
   margin: 0 0 12px;
   font-weight: 700;
   color: #fff;
 }
-
-.fleet-specs {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.fleet-specs li {
-  margin: 6px 0;
-}
-
+.fleet-specs { list-style: none; padding: 0; margin: 0; }
+.fleet-specs li { margin: 6px 0; }
 @media (max-width: 767px) {
   .fleet-box img { height: 260px; }
 }
@@ -109,16 +88,11 @@ header .header-content .header-content-inner p {
 /* ---------------------------------
    Profiles: theme-colored icons
    --------------------------------- */
-#profiles i.fa,
-#profiles i.ai {
-  color: #F05F40; /* theme primary */
+#profiles i.fa, #profiles i.ai {
+  color: #F05F40;
   margin-bottom: 12px;
 }
-
-#profiles h3 {
-  margin-top: 10px;
-  margin-bottom: 0;
-}
+#profiles h3 { margin-top: 10px; margin-bottom: 0; }
 
 /* ---------------------------------
    Credits section (bottom)
@@ -128,11 +102,7 @@ section.credits {
   background: #f8f8f8;
   border-top: 1px solid rgba(0,0,0,0.06);
 }
-
-section.credits small {
-  display: inline-block;
-  line-height: 1.4;
-}
+section.credits small { display: inline-block; line-height: 1.4; }
 
 /* ---------------------------------
    Typography
@@ -150,11 +120,8 @@ h1, h2, h3, h4, h5, h6,
 
 /* Spacing for the dropdown item at the end of the navbar */
 .navbar-lang { padding-left: 0; }
-.lang-switch, .lang-pill { /* legacy placeholders; safe no-ops */ }
-
-.navbar-lang.dropdown {
-  margin-left: 10px;
-}
+.lang-switch, .lang-pill { /* legacy placeholders */ }
+.navbar-lang.dropdown { margin-left: 10px; }
 
 /* Toggle (anchor or button) */
 .navbar-lang > a,
@@ -173,7 +140,7 @@ h1, h2, h3, h4, h5, h6,
   font-size: 16px;
   vertical-align: -1px;
   margin-right: 2px;
-  color: #777; /* matches default Bootstrap navbar link color */
+  color: #777; /* default navbar link color in BS3 */
 }
 
 /* Open state (Bootstrap 3 navbar-default) */
@@ -190,7 +157,7 @@ h1, h2, h3, h4, h5, h6,
   padding: 6px 0;
   border-color: rgba(0,0,0,.12);
   box-shadow: 0 6px 18px rgba(0,0,0,.12);
-  right: 0;       /* right-align menu if dropdown-menu-right not applied */
+  right: 0;  /* right-align menu */
   left: auto;
 }
 
@@ -200,7 +167,6 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.25;
   color: #333;
 }
-
 .navbar-lang .dropdown-menu > li > a:hover,
 .navbar-lang .dropdown-menu > li > a:focus {
   background: #f5f5f5;
@@ -215,11 +181,7 @@ h1, h2, h3, h4, h5, h6,
   background: #f5f5f5;
   color: #222;
 }
-
-.navbar-lang .lang-check {
-  float: right;
-  color: #22cc77; /* subtle success tick */
-}
+.navbar-lang .lang-check { float: right; color: #22cc77; }
 
 /* -----------------------------------------------------------------
    Mobile behavior (Bootstrap 3 collapse)
@@ -235,12 +197,7 @@ h1, h2, h3, h4, h5, h6,
     border: 0;
     box-shadow: none;
   }
-
-  .navbar-lang.dropdown {
-    margin-left: 0;
-    margin-top: 4px;
-  }
-
+  .navbar-lang.dropdown { margin-left: 0; margin-top: 4px; }
   .navbar-lang .dropdown-menu {
     min-width: 100%;
     box-shadow: none;
@@ -248,35 +205,21 @@ h1, h2, h3, h4, h5, h6,
     right: auto;
     left: 0;
   }
-
   /* CSS-only fallback: keep dropdown visible while focused/tapped */
-  .navbar-lang:focus-within .dropdown-menu {
-    display: block;
-  }
-
+  .navbar-lang:focus-within .dropdown-menu { display: block; }
   /* Ensure the toggle itself can receive focus on mobile */
-  .navbar-lang > a,
-  .navbar-lang > button {
-    outline: none;
-  }
+  .navbar-lang > a, .navbar-lang > button { outline: none; }
 }
 
 /* -----------------------------------------------------------------
    Safety nets for visibility and stacking
    ----------------------------------------------------------------- */
-
-/* Keep menus above nearby content */
-.navbar .dropdown-menu { z-index: 2000; }
+.navbar .dropdown-menu { z-index: 2000; } /* keep menus above content */
 
 /* Avoid clipping if a parent sets overflow */
-.navbar,
-.navbar .container,
-.navbar .container-fluid,
-.navbar .navbar-collapse {
+.navbar, .navbar .container, .navbar .container-fluid, .navbar .navbar-collapse {
   overflow: visible;
 }
 
 /* If a touch backdrop ever overlaps the menu in BS3 */
-.dropdown-backdrop {
-  position: static;
-}
+.dropdown-backdrop { position: static; }
